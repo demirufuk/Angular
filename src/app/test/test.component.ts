@@ -4,25 +4,27 @@ import { CompileShallowModuleMetadata } from '@angular/compiler';
 @Component({
   selector: 'app-test',
   template: `
-    <input [(ngModel)] ="name" type="text"> 
-    {{name}}
+
+      <div *ngIf ="displayName; then thenBlock; else elseBlock"></div>
+
+      <ng-template #thenBlock>
+        <h2>ngIfthen</h2>
+      </ng-template>
+
+      <ng-template #elseBlock>
+        <h2>Hidden</h2>
+      </ng-template>
+
+
       `,
 
-  styles: [`
-  `]
+  styles: [``]
 })
 export class TestComponent implements OnInit {
 
-  public name="";
-
+  displayName = true;
 
   constructor() { }
-
-  logMessage(value){
-    console.log(value)
-  }
-
-
 
   ngOnInit() {
   }
